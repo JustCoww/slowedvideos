@@ -31,7 +31,7 @@ def makethumb(cover, output):
     # Blur and brightness
     print(prefix, 'Bluring background...')
     tb = ImageEnhance.Brightness(tb).enhance(0.4)
-    tb = tb.filter(ImageFilter.GaussianBlur(50))
+    tb = tb.filter(ImageFilter.GaussianBlur(25))
     tb = tb.copy()
 
     # Mix into file
