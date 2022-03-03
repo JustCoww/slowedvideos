@@ -25,7 +25,7 @@ def makethumb(cover, output):
     
     # Add a shadow (Black square with blur)
     print(prefix, 'Creating the shadow...')
-    square = Image.new(mode = "RGBA", size = (2500, 2500), color = (0, 0, 0))
+    square = Image.new(mode = "RGBA", size = (x, y), color = (0, 0, 0))
     tb.paste(square, middle)
 
     # Blur and brightness
