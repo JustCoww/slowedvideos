@@ -1,14 +1,17 @@
-# Mega crazy scripts
+# Slowed Videos Scripts
 
 Various scritps from justcow.
+
+
+**Install**
+```
+pip install slowedvideos
+```
+
 
 **Dependencies**
 
 You will need to have ffmpeg in your **PATH** for the "**downloadurl**" to work.
-
-```
-pip install slowedvideos
-```
 
 
 **Arch Based**
