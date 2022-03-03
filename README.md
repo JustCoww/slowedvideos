@@ -3,7 +3,7 @@
 Various scritps from justcow.
 
 
-#Install
+# Install
 ```
 pip install slowedvideos
 ```
