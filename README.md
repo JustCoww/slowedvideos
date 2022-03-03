@@ -44,7 +44,7 @@ output = 'downloaded' # It will download as .wav
 
 downloadurl(url, output)
 ```
-https://soundcloud.com/user-544064018/downloadedwav/s-evs2dROycFZ?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
+https://soundcloud.com/user-544064018/downloadedwav
 
 
 **Make Video Image**
@@ -73,7 +73,7 @@ thumb_output = 'thumb sunrise.png'
 
 makethumb(cover, thumb_output)
 ```
-![thumb sunrise](https://user-images.githubusercontent.com/68345611/156539877-98e53d34-51ac-4ad2-b55d-fa19e141fcee.png)
+![thumb sunrise](https://user-images.githubusercontent.com/68345611/156541125-9f84779a-a6e5-49ce-92f6-4e5a133a30f4.png)
 
 
 **Make Slowed**
@@ -87,7 +87,7 @@ output = 'slowed sunrise.wav'
 
 makeslowed(audio, howslow, output)
 ```
-https://soundcloud.com/user-544064018/slowed-sunrisewav/s-hKAKHkc4TxM?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing
+https://soundcloud.com/user-544064018/slowed-sunrisewav
 
 
 **Export Video**
