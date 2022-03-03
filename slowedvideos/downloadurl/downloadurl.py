@@ -4,6 +4,9 @@ def downloadurl(url, output):
 
     from youtube_dl import YoutubeDL
 
+    output = output.split('.')
+    output = output[0] + '.mp3'
+    
     # Set opts
     print(prefix, 'Setting opts...')
     ytdl_opts = { 'format': 'bestaudio/best', 'outtmpl':output, 'postprocessors':[{'key': 'FFmpegExtractAudio','preferredcodec': 'wav'}] }
