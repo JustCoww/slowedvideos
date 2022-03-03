@@ -1,6 +1,7 @@
 def gui():
 
     from tkinter import Tk, Label, Entry, Button
+    from slowedvideos import buildvideo
 
     root = Tk()
     root.title("Video maker")
@@ -91,8 +92,6 @@ def gui():
 
         global audiomode
         global covermode
-
-        from buildvideo import buildvideo
 
         audio = audio_text_input.get()
         cover = cover_text_input.get()
