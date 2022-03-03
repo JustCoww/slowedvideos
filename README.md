@@ -40,7 +40,7 @@ from slowedvideos import downloadurl
 
 # Variables
 url = 'https://soundcloud.com/trink3tofficial/trink3tofficial-sunrise-prod-plxce'
-output = 'downloaded.wav' # It will download only .wav 
+output = 'downloaded' # It will download as .wav 
 
 downloadurl(url, output)
 ```
