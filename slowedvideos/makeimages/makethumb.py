@@ -5,6 +5,9 @@ def makethumb(cover, output):
     from PIL import Image, ImageDraw, ImageEnhance, ImageFilter 
     from math import trunc
 
+    # Middle
+    middle = (trunc((X-x)/2), trunc((Y-y)/2))
+
     # Import
     print(prefix, f'Importing {cover} ...')
     tb = Image.open(cover)
@@ -20,16 +23,20 @@ def makethumb(cover, output):
     X, Y = (1920, 1080)
     tb = tb.resize((X, Y), resample=0, box=None)
     
+    # Add a shadow (Black square with blur)
+    print(prefix, 'Creating the shadow...')
+    square = Image.new(mode = "RGBA", size = (2500, 2500), color = (0, 0, 0))
+    tb.paste(square, middle)
+
     # Blur and brightness
     print(prefix, 'Bluring background...')
-    tb = ImageEnhance.Brightness(tb).enhance(0.3)
-    tb = tb.filter(ImageFilter.GaussianBlur(60))
+    tb = ImageEnhance.Brightness(tb).enhance(0.4)
+    tb = tb.filter(ImageFilter.GaussianBlur(120))
     tb = tb.copy()
 
     # Mix into file
     print(prefix, 'Merging cover to background...')
-    center = (trunc((X-x)/2), trunc((Y-y)/2))
-    tb.paste(cv, center)
+    tb.paste(cv, middle)
     print(prefix, f'Exporting thumbnail as {output} ...')
     tb.save(output)
     
