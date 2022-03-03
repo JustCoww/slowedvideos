@@ -47,6 +47,20 @@ downloadurl(url, output)
 https://soundcloud.com/user-544064018/downloadedwav
 
 
+**Make Slowed**
+```
+from slowedvideos import makeslowed
+
+# Variables
+audio = 'downloaded.wav'
+howslow = 10 # This changes how slow the audio will be
+output = 'slowed sunrise.wav'
+
+makeslowed(audio, howslow, output)
+```
+https://soundcloud.com/user-544064018/slowed-sunrisewav
+
+
 **Make Video Image**
 ```
 from slowedvideos import makevideo
@@ -74,20 +88,6 @@ thumb_output = 'thumb sunrise.png'
 makethumb(cover, thumb_output)
 ```
 ![thumb sunrise](https://user-images.githubusercontent.com/68345611/156541806-1d7ccdcf-fc5f-43db-9309-af23147baba8.png)
-
-
-**Make Slowed**
-```
-from slowedvideos import makeslowed
-
-# Variables
-audio = 'downloaded.wav'
-howslow = 10 # This changes how slow the audio will be
-output = 'slowed sunrise.wav'
-
-makeslowed(audio, howslow, output)
-```
-https://soundcloud.com/user-544064018/slowed-sunrisewav
 
 
 **Export Video**
