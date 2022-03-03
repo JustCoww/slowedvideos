@@ -51,7 +51,7 @@ downloadurl(url, output)
 from slowedvideos import makevideo
 
 # Variables
-cover = 'sunrise.png'
+cover = 'sunrise.jpg'
 song = 'sunrise'
 artist = 'Kid Trink'
 toptext = '(Slowed + Reverb)'
@@ -66,7 +66,7 @@ makevideo(cover, song, artist, toptext, video_output)
 from slowedvideos import makethumb
 
 # Variables
-cover = 'sunrise.png'
+cover = 'sunrise.jpg'
 thumb_output = 'thumb sunrise.png'
 
 makethumb(cover, thumb_output)
