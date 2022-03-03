@@ -7,7 +7,6 @@ def makeslowed(audio, howslow, output):
     from math import trunc
     from os import remove
     import soundfile
-    import io
 
     # Import audio file
     print(prefix, f'Importing {audio} ...')
