@@ -73,7 +73,7 @@ thumb_output = 'thumb sunrise.png'
 
 makethumb(cover, thumb_output)
 ```
-![thumb sunrise](https://user-images.githubusercontent.com/68345611/156539324-f54a3b39-2f60-42da-969c-64128c8908a7.png)
+![thumb sunrise](https://user-images.githubusercontent.com/68345611/156539877-98e53d34-51ac-4ad2-b55d-fa19e141fcee.png)
 
 
 **Make Slowed**
