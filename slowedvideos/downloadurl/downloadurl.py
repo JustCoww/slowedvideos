@@ -4,8 +4,7 @@ def downloadurl(url, output):
 
     from youtube_dl import YoutubeDL
 
-    output = output.split('.')
-    output = output[0] + '.mp3'
+    output = output + '.mp3'
     
     # Set opts
     print(prefix, 'Setting opts...')
