@@ -5,9 +5,6 @@ def makethumb(cover, output):
     from PIL import Image, ImageDraw, ImageEnhance, ImageFilter 
     from math import trunc
 
-    # Middle
-    middle = (trunc((X-x)/2), trunc((Y-y)/2))
-
     # Import
     print(prefix, f'Importing {cover} ...')
     tb = Image.open(cover)
@@ -22,6 +19,9 @@ def makethumb(cover, output):
     print(prefix, 'Resizing background...')
     X, Y = (1920, 1080)
     tb = tb.resize((X, Y), resample=0, box=None)
+    
+    # Get the middle x y
+    middle = (trunc((X-x)/2), trunc((Y-y)/2))
     
     # Add a shadow (Black square with blur)
     print(prefix, 'Creating the shadow...')
