@@ -3,13 +3,13 @@
 Various scritps from justcow.
 
 
-**Install**
+#Install
 ```
 pip install slowedvideos
 ```
 
 
-**Dependencies**
+# Dependencies
 
 You will need to have ffmpeg in your **PATH** for the "**downloadurl**" to work.
 
