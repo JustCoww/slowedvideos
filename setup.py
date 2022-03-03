@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import codecs
 import os
 
-VERSION = '0.1.9'
+VERSION = '0.2.0'
 DESCRIPTION = 'Various scripts from justcow.'
 
 # Setting up
