@@ -3,7 +3,7 @@ from slowedvideos.video import buildvideo
 
 root = Tk()
 root.title("Video maker")
-root.geometry('500x250')
+root.geometry('550x350')
 
 audiomode_status = False
 covermode_status = False
