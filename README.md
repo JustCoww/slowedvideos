@@ -36,7 +36,6 @@ Just install ffmpeg and make it availabe in your **PATH**.
 
 **Download URL**
 ```python
-# coding: utf-8
 from slowedvideos import downloadurl
 
 # Variables
@@ -50,7 +49,6 @@ https://soundcloud.com/user-544064018/downloadedwav
 
 **Make Slowed**
 ```python
-# coding: utf-8
 from slowedvideos import makeslowed
 
 # Variables
@@ -65,7 +63,6 @@ https://soundcloud.com/user-544064018/slowed-sunrisewav
 
 **Make Video Image**
 ```python
-# coding: utf-8
 from slowedvideos import makevideo
 
 # Variables
@@ -82,7 +79,6 @@ makevideo(cover, song, artist, toptext, video_output)
 
 **Make Thumb Image**
 ```python
-# coding: utf-8
 from slowedvideos import makethumb
 
 # Variables
@@ -96,7 +92,6 @@ makethumb(cover, thumb_output)
 
 **Export Video**
 ```python
-# coding: utf-8
 from slowedvideos import exportvideo
 
 # Variables
