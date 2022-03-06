@@ -1,3 +1,22 @@
+def downloadurl(url, output):
+
+    prefix = 'Download URL -'
+
+    from youtube_dl import YoutubeDL
+
+    output = output + '.mp3'
+    
+    # Set opts
+    print(prefix, 'Setting opts...')
+    ytdl_opts = { 'format': 'bestaudio/best', 'outtmpl':output, 'postprocessors':[{'key': 'FFmpegExtractAudio','preferredcodec': 'wav'}] }
+    print(prefix, ytdl_opts)
+    
+    # Download video
+    print(prefix, 'Downloading audio...')
+    YoutubeDL(ytdl_opts).download([url])
+
+    return print(prefix, 'Done')
+
 def makeslowed(audio, howslow, output):
 
     prefix = 'Make Slowed Reverb -'
@@ -17,7 +36,7 @@ def makeslowed(audio, howslow, output):
     sample_rate -= trunc(sample_rate*(howslow/100))
 
     # Add reverb (Path goes to the module and gets the full directory of TAL-Reverb-4.vst3)
-    vst = VST3Plugin(str(Path(__file__).parent / "TAL-Reverb-4.vst3"))
+    vst = VST3Plugin(str(Path(__file__).parent / "vst/TAL-Reverb-4.vst3"))
     print(prefix, f'Adding reverb using {vst} ...')
 
     vst.size = 70

@@ -1,5 +1,5 @@
 from tkinter import Tk, Label, Entry, Button
-from slowedvideos import buildvideo
+from slowedvideos.video import buildvideo
 
 root = Tk()
 root.title("Video maker")
@@ -86,6 +86,16 @@ artist_text.grid(column=0, row=7)
 artist_text_input = Entry(root, width=30)
 artist_text_input.grid(column=1, row=7)
 
+blank = Label(root)
+blank.grid(column=0, row=8)
+
+# Speed
+speed_text = Label(root, text='Speed')
+speed_text.grid(column=0, row=9)
+speed_text_input = Entry(root, width=30)
+speed_text_input.grid(column=1, row=9)
+
+
 def build():
 
     global audiomode
@@ -95,16 +105,32 @@ def build():
     cover = cover_text_input.get()
     artist = artist_text_input.get()
     song = song_text_input.get()
+    speed = float(speed_text_input.get())
 
-    buildvideo(song, artist, audiomode, audio, covermode, cover)
+    try:
+        buildvideo(song, artist, audiomode, audio, covermode, cover, speed)
+
+        blank = Label(root)
+        blank.grid(column=0, row=12)
+
+        build_progress = Label(root, text='Done')
+        build_progress.grid(column=0, row=13)
+    
+    except:
+        blank = Label(root)
+        blank.grid(column=0, row=12)
+
+        build_progress = Label(root, text='An error occurred during the build process check console.')
+        build_progress.grid(column=0, row=13)
+        
 
 blank = Label(root)
-blank.grid(column=0, row=8)
+blank.grid(column=0, row=10)
 
 # Build
 build_button = Button(root, text="Build", command=build)
-build_button.grid(column=0, row=9)
+build_button.grid(column=0, row=11)
 build_text = Label(root, text='Click here after inserting all the things.')
-build_text.grid(column=1, row=9)
+build_text.grid(column=1, row=11)
 
 root.mainloop()
