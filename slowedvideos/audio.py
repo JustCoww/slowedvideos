@@ -39,7 +39,7 @@ def makeslowed(audio, howslow, output):
     vst = VST3Plugin(str(Path(__file__).parent / "vst/TAL-Reverb-4.vst3"))
     print(prefix, f'Adding reverb using {vst} ...')
 
-    vst.size = 70
+    vst.size = 50
     vst.diffuse = 100
     vst.delay = '0.0000 s'
     vst.modulation_rate = 0
@@ -47,7 +47,7 @@ def makeslowed(audio, howslow, output):
     vst.low_cut = 75
     vst.high_cut = 4000
     vst.dry = 80
-    vst.wet = 25
+    vst.wet = 10
 
     # Add effects
     effected = vst(audio, sample_rate)
