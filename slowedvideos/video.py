@@ -24,7 +24,7 @@ def makethumb(cover, output):
     
     # Add a shadow (Black square with blur)
     print(prefix, 'Creating the shadow...')
-    square = Image.new(mode = "RGBA", size = (x, y), color = (0, 0, 0))
+    square = Image.new(mode = "RGBA", size = (x, y), color = 'black')
     tb.paste(square, middle)
 
     # Blur and turn brightness down
@@ -66,7 +66,7 @@ def makevideo(cover, song, artist, toptext, output):
 
     # Add a shadow (Black square with blur)
     print(prefix, 'Creating the shadow...')
-    square = Image.new(mode = "RGBA", size = (2500, 2500), color = (0, 0, 0))
+    square = Image.new(mode = "RGBA", size = (2500, 2500), color = 'black')
     bg.paste(square, (trunc((X-x)/2), 659))
 
     # Blur and turn brightness down
@@ -97,7 +97,7 @@ def makevideo(cover, song, artist, toptext, output):
         print(prefix, f'Writing "{i[0]}" with "{i[2]}" font')
         font = ImageFont.truetype(font, i[3])
         x, y = text.textsize(i[0], font=font)
-        text.text(((X-x)/2, i[1]), i[0], fill=(255, 255, 255), font=font, align='center')
+        text.text(((X-x)/2, i[1]), i[0], fill='white', font=font, align='center')
 
     # Export final thing to a file
     print(prefix, f'Exporting file as {output} ...')
