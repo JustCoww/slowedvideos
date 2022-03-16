@@ -22,10 +22,21 @@ def makethumb(cover, output):
     cv = cv.resize((x, y))
     tb = tb.resize((X, Y))
     
+    # Create a rounded cornered square mask for the rounded cover
+    rad = 45
+    circle = Image.new('L', (rad * 2, rad * 2), 0)
+    draw = ImageDraw.Draw(circle)
+    draw.ellipse((0, 0, rad * 2, rad * 2), fill=255)
+    rounded_mask = Image.new('L', (x, y), "white")
+    rounded_mask.paste(circle.crop((0, 0, rad, rad)), (0, 0))
+    rounded_mask.paste(circle.crop((0, rad, rad, rad * 2)), (0, y - rad))
+    rounded_mask.paste(circle.crop((rad, 0, rad * 2, rad)), (x - rad, 0))
+    rounded_mask.paste(circle.crop((rad, rad, rad * 2, rad * 2)), (x - rad, y - rad))
+    
     # Add a shadow (Black square with blur)
     print(prefix, 'Creating the shadow...')
     square = Image.new(mode = "RGBA", size = (x, y), color = 'black')
-    tb.paste(square, middle)
+    tb.paste(square, middle, rounded_mask)
 
     # Blur and turn brightness down
     print(prefix, 'Adding blur to background...')
@@ -34,7 +45,7 @@ def makethumb(cover, output):
 
     # Paste cover into the background
     print(prefix, 'Merging cover with background...')
-    tb.paste(cv, middle)
+    tb.paste(cv, middle, rounded_mask)
     
     # Export final thing to a file
     print(prefix, f'Exporting thumbnail as {output} ...')
@@ -64,10 +75,21 @@ def makevideo(cover, song, artist, toptext, output):
     cv = cv.resize((x, y))
     bg = bg.resize((X, Y))
 
+    # Create a rounded cornered square mask for the rounded cover
+    rad = 100
+    circle = Image.new('L', (rad * 2, rad * 2), 0)
+    draw = ImageDraw.Draw(circle)
+    draw.ellipse((0, 0, rad * 2, rad * 2), fill=255)
+    rounded_mask = Image.new('L', (x, y), "white")
+    rounded_mask.paste(circle.crop((0, 0, rad, rad)), (0, 0))
+    rounded_mask.paste(circle.crop((0, rad, rad, rad * 2)), (0, y - rad))
+    rounded_mask.paste(circle.crop((rad, 0, rad * 2, rad)), (x - rad, 0))
+    rounded_mask.paste(circle.crop((rad, rad, rad * 2, rad * 2)), (x - rad, y - rad))
+
     # Add a shadow (Black square with blur)
     print(prefix, 'Creating the shadow...')
     square = Image.new(mode = "RGBA", size = (2500, 2500), color = 'black')
-    bg.paste(square, (trunc((X-x)/2), 659))
+    bg.paste(square, (trunc((X-x)/2), 659), rounded_mask)
 
     # Blur and turn brightness down
     print(prefix, 'Adding blur to background...')
@@ -76,7 +98,7 @@ def makevideo(cover, song, artist, toptext, output):
 
     # Paste cover into the background
     print(prefix, 'Merging cover with background')
-    bg.paste(cv, ( trunc((X-x)/2 ), 659))
+    bg.paste(cv, ( trunc((X-x)/2 ), 659), rounded_mask)
 
 
     ### Text
@@ -84,7 +106,7 @@ def makevideo(cover, song, artist, toptext, output):
 
     # Layout is [text, y-coordinates (from top), font, font-size]
     toptext = [toptext, 300, 'toptext_font.ttf', 250]
-    song = [song, 3240, 'down1_font.ttf', 279]
+    song = [song, 3250, 'down1_font.ttf', 279]
     artist = [artist, 3640, 'down2_font.ttf', 186]
 
     # Generate the text
