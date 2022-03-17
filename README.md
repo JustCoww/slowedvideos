@@ -39,12 +39,12 @@ Just install ffmpeg and make it availabe in your **PATH**.
 from slowedvideos.audio import downloadurl
 
 # Variables
-url = 'https://soundcloud.com/100gecs/gecgecgec-remix-feat-lil-west-and-tony-velour'
+url = 'https://soundcloud.com/100gecs/gecgecgec'
 output = 'downloaded' # It will download as .wav 
 
 downloadurl(url, output)
 ```
-https://soundcloud.com/100gecs/gecgecgec-remix-feat-lil-west-and-tony-velour
+https://soundcloud.com/100gecs/gecgecgec
 
 
 **Slowing and adding reverb to the downloaded audio**
@@ -54,11 +54,11 @@ from slowedvideos.audio import makeslowed
 # Variables
 audio = 'downloaded.wav'
 speed = 10 # This changes how slow the audio will be
-output = 'slowed gecgecgec (Remix).wav'
+output = 'slowed gecgecgec.wav'
 
 makeslowed(audio, speed, output)
 ```
-https://soundcloud.com/justcoww/slowed-gecgecgec-remix
+https://soundcloud.com/justcoww/slowed-gecgecgec
 
 
 **Creating the video image**
@@ -66,15 +66,15 @@ https://soundcloud.com/justcoww/slowed-gecgecgec-remix
 from slowedvideos.video import makevideo
 
 # Variables
-cover = 'cover.png'
-song = 'gecgecgec (Remix)'
+cover = 'cover.jpg'
+song = 'gecgecgec'
 artist = '100 gecs'
 toptext = '(Slowed + Reverb)'
-video_output = 'video gecgecgec (Remix).png'
+video_output = 'video gecgecgec.png'
 
 makevideo(cover, song, artist, toptext, video_output)
 ```
-![video gecgecgec (Remix)](https://user-images.githubusercontent.com/68345611/158817334-633d7128-5b70-43a1-8140-67e22bc523f1.png)
+![video gecgecgec](https://user-images.githubusercontent.com/68345611/158889345-75f4ec35-63e9-4c61-a307-f4332401f743.png)
 
 
 **Creating the thumbnail image**
@@ -82,12 +82,12 @@ makevideo(cover, song, artist, toptext, video_output)
 from slowedvideos.video import makethumb
 
 # Variables
-cover = 'cover.png'
-thumb_output = 'thumb gecgecgec (Remix).png'
+cover = 'cover.jpg'
+thumb_output = 'thumb gecgecgec.png'
 
 makethumb(cover, thumb_output)
 ```
-![thumb gecgecgec (Remix)](https://user-images.githubusercontent.com/68345611/158817432-3340c16c-4e8b-49fb-8630-ce43d72ef7a8.png)
+![thumb gecgecgec](https://user-images.githubusercontent.com/68345611/158889421-41a81372-a2af-453e-9075-99991964b8dd.png)
 
 
 **Exporting the video**
@@ -95,10 +95,10 @@ makethumb(cover, thumb_output)
 from slowedvideos.video import exportvideo
 
 # Variables
-audio = 'slowed gecgecgec (Remix).wav'
-image = 'video gecgecgec (Remix).png'
-output = 'videofile gecgecgec (Remix).mp4'
+audio = 'slowed gecgecgec.wav'
+image = 'video gecgecgec.png'
+output = 'videofile gecgecgec.mp4'
 
 exportvideo(audio, image, output)
 ```
-https://user-images.githubusercontent.com/68345611/158817541-f0fe9117-b1c7-48fb-9aae-47d99a38b790.mp4
+https://user-images.githubusercontent.com/68345611/158889533-050e7a14-7a11-4cee-8437-c6c9e9c77334.mp4
