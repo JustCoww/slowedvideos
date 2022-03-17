@@ -53,10 +53,10 @@ from slowedvideos.audio import makeslowed
 
 # Variables
 audio = 'downloaded.wav'
-howslow = 10 # This changes how slow the audio will be
+speed = 10 # This changes how slow the audio will be
 output = 'slowed sunrise.wav'
 
-makeslowed(audio, howslow, output)
+makeslowed(audio, speed, output)
 ```
 https://soundcloud.com/user-544064018/slowed-sunrisewav
 
