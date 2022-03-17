@@ -17,7 +17,7 @@ def downloadurl(url, output):
 
     return print(prefix, 'Done')
 
-def makeslowed(audio, howslow, output):
+def makeslowed(audio, speed, output):
 
     prefix = 'Make Slowed Reverb -'
 
@@ -33,7 +33,7 @@ def makeslowed(audio, howslow, output):
 
     # Slow audio
     print(prefix, 'Slowing audio...')
-    sample_rate -= trunc(sample_rate*(howslow/100))
+    sample_rate -= trunc(sample_rate*(speed/100))
 
     # Add reverb (Path goes to the module and gets the full directory of TAL-Reverb-4.vst3)
     vst = VST3Plugin(str(Path(__file__).parent / "vst/TAL-Reverb-4.vst3"))
