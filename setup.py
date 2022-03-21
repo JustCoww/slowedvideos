@@ -1,8 +1,6 @@
 from setuptools import setup, find_packages
-import codecs
-import os
 
-VERSION = '0.3.5'
+VERSION = '0.3.6'
 DESCRIPTION = 'Various scripts from justcow.'
 
 # Setting up
