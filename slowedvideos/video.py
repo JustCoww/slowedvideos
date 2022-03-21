@@ -1,6 +1,6 @@
 def makethumb(cover, output):
 
-    prefix = 'Thumbnail -'
+    prefix = '[Thumbnail PNG] '
 
     from PIL import Image, ImageDraw, ImageEnhance, ImageFilter 
     from math import trunc
@@ -55,7 +55,7 @@ def makethumb(cover, output):
 
 def makevideo(cover, song, artist, toptext, output):
 
-    prefix = 'Make Video -'
+    prefix = '[Video PNG]'
 
     from PIL import Image, ImageDraw, ImageFont, ImageEnhance, ImageFilter
     from importlib import resources
@@ -129,7 +129,7 @@ def makevideo(cover, song, artist, toptext, output):
 
 def exportvideo(audio, img, output):
     
-    prefix = 'Export Video -'
+    prefix = '[Export MP4]'
 
     from moviepy.editor import AudioFileClip, ImageClip
 
