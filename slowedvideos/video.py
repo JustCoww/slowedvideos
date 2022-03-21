@@ -1,6 +1,6 @@
 def makethumb(cover, output):
 
-    prefix = '[Thumbnail PNG] '
+    prefix = '[Thumbnail PNG]'
 
     from PIL import Image, ImageDraw, ImageEnhance, ImageFilter 
     from math import trunc
