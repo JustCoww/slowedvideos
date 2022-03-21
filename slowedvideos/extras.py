@@ -1,4 +1,4 @@
-def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, speed):
+def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, exportmode, speed):
 
     # Importing modules to create and enter the folder
     from os import mkdir, chdir
@@ -45,6 +45,6 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, speed)
     makeslowed(audio, speed, slowd_output)
     makevideo(cover, song, artist, toptext, video_output)
     makethumb(cover, thumb_output)
-    exportvideo(slowd_output, video_output, video_export)
+    exportvideo(slowd_output, video_output, exportmode, video_export)
 
     chdir('..')
