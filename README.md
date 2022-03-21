@@ -98,7 +98,8 @@ from slowedvideos.video import exportvideo
 audio = 'slowed gecgecgec.wav'
 image = 'video gecgecgec.png'
 output = 'videofile gecgecgec.mp4'
+mode = 'moviepy'
 
-exportvideo(audio, image, output)
+exportvideo(audio, image, mode, output)
 ```
 https://user-images.githubusercontent.com/68345611/158889533-050e7a14-7a11-4cee-8437-c6c9e9c77334.mp4
