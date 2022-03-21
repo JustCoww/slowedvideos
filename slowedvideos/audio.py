@@ -1,6 +1,6 @@
 def downloadurl(url, output):
 
-    prefix = 'Download URL -'
+    prefix = '[Download URL]'
 
     from youtube_dl import YoutubeDL
 
@@ -19,7 +19,7 @@ def downloadurl(url, output):
 
 def makeslowed(audio, speed, output):
 
-    prefix = 'Make Slowed Reverb -'
+    prefix = '[Slowed Reverb]'
 
     from pedalboard import Pedalboard, VST3Plugin
     from pathlib import Path
