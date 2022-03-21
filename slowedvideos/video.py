@@ -127,76 +127,40 @@ def makevideo(cover, song, artist, toptext, output):
 
     return print(prefix, 'Done')
 
-def exportvideo(audio, img, output):
+def exportvideo(audio, img, mode, output):
     
     prefix = '[Export MP4]'
 
-    from moviepy.editor import AudioFileClip, ImageClip
+    if 'moviepy' in mode:
 
-    # Import files
-    print(prefix, f'Importing {audio}, {img} ...')
-    audio = AudioFileClip(audio)
-    img = ImageClip(img)
-    
-    # Mix into video
-    print(prefix, 'Setting audio...')
-    video = img.set_audio(audio)
-    print(prefix, 'Setting video duration...')
-    video.duration = audio.duration
-    print(prefix, 'Setting video at 1 fps...')
-    video.fps = 1
-    print(prefix, f'Exporting {output}...')
-    video.write_videofile(output)
+        prefix = '[Export MP4 (MOVIEPY)]'
+
+        from moviepy.editor import AudioFileClip, ImageClip
+
+        # Import files
+        print(prefix, f'Importing {audio}, {img} ...')
+        audio = AudioFileClip(audio)
+        img = ImageClip(img)
+        
+        # Mix into video
+        print(prefix, 'Setting audio...')
+        video = img.set_audio(audio)
+        print(prefix, 'Setting video duration...')
+        video.duration = audio.duration
+        print(prefix, 'Setting video at 1 fps...')
+        video.fps = 1
+        print(prefix, f'Exporting {output}...')
+        video.write_videofile(output)
+
+    elif 'ffmpeg' in mode:
+        
+        prefix = '[Export MP4 (FFMPEG)]'
+
+        from os import system
+
+        system(f'ffmpeg -framerate 1 -loop 1 -i "{img}" -i "{audio}" -vf format=yuv420p -r 10 -shortest -movflags +faststart "{output}"')
+
+    else:
+        print(prefix, 'Invalid export mode.')
 
     return print(prefix, 'Done')
-
-def buildvideo(song, artist, audiomode, audio, covermode, cover, speed):
-
-    # Importing modules to create and enter the folder
-    from os import mkdir, chdir
-    from shutil import copy
-
-    folder = f'slowed {song}'
-    mkdir(folder)
-
-    if audiomode == 'url':
-
-        from slowedvideos.audio import downloadurl
-        chdir(folder)
-        downloadurl(audio, 'original')
-        chdir('..')
-        audio = 'original.wav'
-
-    else:
-        copy(audio, folder)
-
-    if covermode == 'url':
-
-        from requests import get
-        from shutil import copyfileobj
-        chdir(folder)
-        with open('cover.png','wb') as f, get(cover, stream = True) as res:
-            copyfileobj(res.raw, f)
-        chdir('..')
-        cover = 'cover.png'
-
-    else:
-        copy(cover, folder)
-
-    chdir(folder)
-
-    # Setting up file names
-    video_export = f'videofile {song}.mp4'
-    thumb_output = f'thumb {song}.png'
-    video_output = f'video {song}.png'
-    slowd_output = f'slowed {song}.wav'
-
-    # Building the video
-    from slowedvideos.audio import makeslowed
-    from slowedvideos.video import makevideo, makethumb, exportvideo
-    makeslowed(audio, speed, slowd_output)
-    makevideo(cover, song, artist, '(Slowed + Reverb)', video_output)
-    makethumb(cover, thumb_output)
-    exportvideo(slowd_output, video_output, video_export)
-
-    chdir('..')
