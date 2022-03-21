@@ -159,7 +159,7 @@ def exportvideo(audio, img, mode, output):
 
         from os import system
         print(prefix, 'Starting to export video with "FFMPEG"')
-        system(f'ffmpeg -loop 1 -framerate 1 -i {img} -i {audio} -c copy -shortest {output}.mkv')
+        system(f'ffmpeg -loop 1 -framerate 1 -i "{img}" -i "{audio}" -c copy -shortest "{output}.mkv"')
 
     else:
         
