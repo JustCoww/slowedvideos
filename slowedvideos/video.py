@@ -136,6 +136,7 @@ def exportvideo(audio, img, mode, output):
         prefix = '[Export MP4 (MOVIEPY)]'
 
         from moviepy.editor import AudioFileClip, ImageClip
+        print(prefix, 'Starting to export video with "MOVIEPY"')
 
         # Import files
         print(prefix, f'Importing {audio}, {img} ...')
@@ -157,10 +158,11 @@ def exportvideo(audio, img, mode, output):
         prefix = '[Export MP4 (FFMPEG)]'
 
         from os import system
-
-        system(f'ffmpeg -framerate 1 -loop 1 -i "{img}" -i "{audio}" -vf format=yuv420p -r 10 -shortest -movflags +faststart "{output}"')
+        print(prefix, 'Starting to export video with "FFMPEG"')
+        system(f'ffmpeg -loop 1 -framerate 1 -i {img} -i {audio} -c copy -shortest {output}.mkv')
 
     else:
+        
         print(prefix, 'Invalid export mode.')
 
     return print(prefix, 'Done')
