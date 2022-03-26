@@ -52,5 +52,9 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
     remove(temp_slowd_output)
     makevideo(cover, song, artist, toptext, video_output)
     exportvideo(slowd_output, video_output, exportmode, video_export)
+    
+    # Convert original sound file to mp3 to save space
+    system(f'ffmpeg -i "original.wav" -vn -ar 44100 -ac 2 -b:a 320k "original.mp3"')
+    remove('original.wav')
 
     chdir('..')
