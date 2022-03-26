@@ -162,7 +162,7 @@ def exportvideo(audio, img, mode, output):
         print(prefix, 'Starting to export video with "FFMPEG"')
         
         
-        export_cmd = system(f'''ffmpeg -loop 1 -framerate 1 -i "{img}" -i "{audio}" -c copy -shortest "{output}"''')
+        export_cmd = system(f'''ffmpeg -loop 1 -framerate 1 -i "{img}" -i "{audio}" -c:v libx264 -preset veryslow -crf 0 -c:a copy -shortest "{output}"''')
         print(prefix, f'Exited with code: {export_cmd} (0 = success)')
 
     else:
