@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.4.3'
+VERSION = '0.4.4'
 DESCRIPTION = 'Various scripts from justcow.'
 
 # Setting up
