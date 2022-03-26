@@ -32,7 +32,7 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
 
         chdir(folder)
         with open("cover.png", "wb") as f:
-            with get(url) as r:
+            with get(cover) as r:
                 f.write(r.content)
         chdir('..')
         cover = 'cover.png'
