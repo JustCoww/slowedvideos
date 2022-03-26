@@ -31,8 +31,9 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
     if covermode == 'url':
 
         chdir(folder)
-        with open('cover.png','wb') as f, get(cover, stream = True) as res:
-            copyfileobj(res.raw, f)
+        with open("cover.png", "wb") as f:
+            with get(url) as r:
+                f.write(r.content)
         chdir('..')
         cover = 'cover.png'
 
