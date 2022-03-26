@@ -44,11 +44,10 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
 
     # Building the video
     temp_slowd_output = slowd_output + '.wav'
-    slow_cmd = Process(target=makeslowed, args=[audio, speed, temp_slowd_output])
     mkthumb_cmd = Process(target=makethumb, args=[cover, thumb_output])
 
-    slow_cmd.start()
     mkthumb_cmd.start()
+    makeslowed(audio, speed, temp_slowd_output)
     system(f'ffmpeg -i "{temp_slowd_output}" -vn -ar 44100 -ac 2 -b:a 320k "{slowd_output}"')
     remove(temp_slowd_output)
     makevideo(cover, song, artist, toptext, video_output)
