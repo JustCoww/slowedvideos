@@ -161,17 +161,9 @@ def exportvideo(audio, img, mode, output):
         
         print(prefix, 'Starting to export video with "FFMPEG"')
         
-        export_cmd = system(f'''ffmpeg -loop 1 -framerate 1 -i "{img}" -i "{audio}" -c copy -shortest "{output}.mkv"''')
-        if export_cmd == 0:
-            print(prefix, 'Export ran sucessfully')
-            convert_cmd = system(f'''ffmpeg -i "{output}.mkv" "{output}"''')
-            if convert_cmd == 0:
-                print(prefix, 'Convertion ran sucessfully')
-                remove(f'{output}.mkv')
-            else:
-                print(prefix, f'Error occured in convertion: {convert_cmd}')
-        else:
-            print(prefix, f'Error occured in download: {export_cmd}')
+        
+        export_cmd = system(f'''ffmpeg -loop 1 -framerate 1 -i "{img}" -i "{audio}" -c copy -shortest "{output}"''')
+        print(f'Exited with code: {export_cmd} (0 = sucess)')
 
     else:
         
