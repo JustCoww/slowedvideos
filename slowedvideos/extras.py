@@ -11,7 +11,7 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
     from time import sleep
 
     # Setting up file names
-    video_export = f'videofile {song}.mp4'
+    video_export = f'videofile {song}.mov'
     thumb_output = f'thumb {song}.png'
     video_output = f'video {song}.png'
     slowd_output = f'slowed {song}.wav'
