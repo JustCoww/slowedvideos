@@ -1,15 +1,25 @@
 def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, exportmode, speed):
 
-    # Importing modules to create and enter the folder
+    # Importing modules
+    from slowedvideos.video import makevideo, makethumb, exportvideo
+    from slowedvideos.audio import makeslowed, downloadurl
+    from multiprocessing import Process
+    from shutil import copyfileobj
     from os import mkdir, chdir
+    from requests import get
     from shutil import copy
+    from time import sleep
 
+    # Setting up file names
+    video_export = f'videofile {song}.mp4'
+    thumb_output = f'thumb {song}.png'
+    video_output = f'video {song}.png'
+    slowd_output = f'slowed {song}.wav'
     folder = f'slowed {song}'
     mkdir(folder)
 
     if audiomode == 'url':
 
-        from slowedvideos.audio import downloadurl
         chdir(folder)
         downloadurl(audio, 'original')
         chdir('..')
@@ -20,8 +30,6 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
 
     if covermode == 'url':
 
-        from requests import get
-        from shutil import copyfileobj
         chdir(folder)
         with open('cover.png','wb') as f, get(cover, stream = True) as res:
             copyfileobj(res.raw, f)
@@ -33,18 +41,13 @@ def buildvideo(song, artist, audiomode, audio, covermode, cover, toptext, export
 
     chdir(folder)
 
-    # Setting up file names
-    video_export = f'videofile {song}.mp4'
-    thumb_output = f'thumb {song}.png'
-    video_output = f'video {song}.png'
-    slowd_output = f'slowed {song}.wav'
-
     # Building the video
-    from slowedvideos.audio import makeslowed
-    from slowedvideos.video import makevideo, makethumb, exportvideo
-    makeslowed(audio, speed, slowd_output)
+    slow_cmd = Process(target=makeslowed, args=[audio, speed, slowd_output])
+    mkthumb_cmd = Process(target=makethumb, args=[cover, thumb_output])
+
+    slow_cmd.start()
+    mkthumb_cmd.start()
     makevideo(cover, song, artist, toptext, video_output)
-    makethumb(cover, thumb_output)
     exportvideo(slowd_output, video_output, exportmode, video_export)
 
     chdir('..')
