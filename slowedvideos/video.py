@@ -163,7 +163,7 @@ def exportvideo(audio, img, mode, output):
         
         
         export_cmd = system(f'''ffmpeg -loop 1 -framerate 1 -i "{img}" -i "{audio}" -c copy -shortest "{output}"''')
-        print(f'Exited with code: {export_cmd} (0 = sucess)')
+        print(prefix, f'Exited with code: {export_cmd} (0 = sucess)')
 
     else:
         
