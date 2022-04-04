@@ -2,7 +2,7 @@ def downloadurl(url, output):
 
     prefix = '[Download URL]'
 
-    from youtube_dl import YoutubeDL
+    from yt_dlp import YoutubeDL
 
     output = output + '.mp3'
     
